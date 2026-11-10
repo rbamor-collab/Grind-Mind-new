@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Final Assessment: Sales Data Analysis & Report - GrindMind</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1a0b1c;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #1a0b1c;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .site-logo {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        .challenge-container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+
+        .challenge-card {
+            background-color: #ffffff;
+            color: #1a0b1c;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            margin-bottom: 25px;
+        }
+
+        .badge-challenge {
+            display: inline-block;
+            background-color: #d1fae5;
+            color: #059669;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .challenge-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #111827;
+            margin: 0 0 10px 0;
+        }
+
+        .requirements-list {
+            background-color: #f0fdf4;
+            border-left: 4px solid #10b981;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .requirements-list ul {
+            margin: 10px 0 0 0;
+            padding-left: 20px;
+            color: #374151;
+        }
+
+        .requirements-list li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .raw-data-box {
+            background-color: #2c1a2e;
+            color: #f3e8ff;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            position: relative;
+            margin: 15px 0;
+        }
+
+        .btn-copy {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #ff3385;
+            color: #fff;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .btn-copy:hover {
+            background-color: #e60067;
+        }
+
+        /* Excel-like Table Styling */
+        .excel-table-container {
+            overflow-x: auto;
+            margin-top: 15px;
+            border-radius: 8px;
+            border: 1px solid #d1d5db;
+        }
+
+        .excel-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Calibri', Arial, sans-serif;
+            background: #ffffff;
+            color: #000000;
+        }
+
+        .excel-table th, .excel-table td {
+            border: 1px solid #d1d5db;
+            padding: 8px 14px;
+            font-size: 0.9rem;
+        }
+
+        .excel-table th {
+            background-color: #107c41; /* Excel Dark Green */
+            color: #ffffff;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        /* Conditional Formatting Highlight Simulations */
+        .highlight-green {
+            background-color: #d1fae5;
+            color: #065f46;
+            font-weight: bold;
+        }
+
+        .highlight-red {
+            background-color: #fee2e2;
+            color: #991b1b;
+            font-weight: bold;
+        }
+
+        .chart-mockup {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .chart-bar-wrapper {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            height: 160px;
+            margin-top: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #9ca3af;
+        }
+
+        .chart-bar {
+            width: 60px;
+            background-color: #107c41;
+            border-radius: 4px 4px 0 0;
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: bold;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 5px;
+        }
+
+        .upload-section {
+            background-color: #f3e8ff;
+            border: 2px dashed #ff75c3;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn-action {
+            background-color: #ff3385;
+            color: #ffffff;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn-action:hover {
+            background-color: #e60067;
+        }
+
+        .btn-back {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #6b7280;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="logo-container">
+            <img src="image/logo.png" alt="GrindMind Logo" class="site-logo">
+            <span class="logo-text">GRINDMIND</span>
+        </div>
+        <a href="excel-course.html" class="btn-back">&larr; Back to Excel Course</a>
+    </header>
+
+    <main class="challenge-container">
+        <div class="challenge-card">
+            <span class="badge-challenge">Excel Module 3 &bull; Final Course Assessment</span>
+            <h1 class="challenge-title">Sales Data Analysis & Report</h1>
+            <p style="color: #4b5563; line-height: 1.6;">
+                Imagine that you are a data analyst assigned to prepare a formal sales performance report for management. Apply all advanced Excel techniques from Course 2 to organize, process, and visualize your dataset.
+            </p>
+
+            <!-- REQUIREMENTS -->
+            <div class="requirements-list">
+                <h3 style="margin: 0; color: #111827;">📋 Activity Requirements & Course 2 Integration:</h3>
+                <ul>
+                    <li><strong>Worksheet Setup & Data Entry:</strong> Copy the raw sales table below into a new Excel worksheet and format headers cleanly.</li>
+                    <li><strong>Formulas & Calculations:</strong> Calculate Total Sales per row (<code>= Quantity * Unit Price</code>) and compute grand totals using <code>=SUM()</code>.</li>
+                    <li><strong>Sorting & Filtering (Lesson 3.1):</strong> Sort the dataset by Total Sales from highest to lowest, and apply a filter to isolate transactions above ₱10,000.</li>
+                    <li><strong>Conditional Formatting (Lesson 3.1):</strong> Highlight top sales figures (Total Sales > ₱30,000) in soft green and highlight low quantities (&lt; 10) in light red.</li>
+                    <li><strong>Data Visualization (Lesson 3.2):</strong> Insert a Bar Chart or Column Chart comparing Total Sales across different Regions or Categories. Add clear titles and data labels.</li>
+                </ul>
+            </div>
+
+            <!-- RAW DATA TO COPY -->
+            <h3 style="color: #111827; margin-top: 30px;">📄 Raw Sales Data to Copy:</h3>
+            <div class="raw-data-box" id="rawData">
+<button class="btn-copy" onclick="copyRawData()">Copy CSV Data</button>Transaction ID,Region,Category,Quantity,Unit Price (PHP)
+TXN-101,Luzon,Electronics,18,2500.00
+TXN-102,Visayas,Office Supplies,7,450.00
+TXN-103,Mindanao,Electronics,5,15000.00
+TXN-104,Luzon,Accessories,40,350.00
+TXN-105,Visayas,Electronics,12,8200.00
+TXN-106,Mindanao,Office Supplies,6,3200.00
+TXN-107,Luzon,Office Supplies,25,1100.00
+            </div>
+
+            <!-- EXPECTED OUTPUT PREVIEW -->
+            <h3 style="color: #111827; margin-top: 30px;">👁️ Target Analysis & Formatting Reference:</h3>
+            <div class="excel-table-container">
+                <table class="excel-table">
+                    <thead>
+                        <tr>
+                            <th>Transaction ID</th>
+                            <th>Region</th>
+                            <th>Category</th>
+                            <th style="text-align: right;">Quantity</th>
+                            <th style="text-align: right;">Unit Price</th>
+                            <th style="text-align: right;">Total Sales</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>TXN-105</td>
+                            <td>Visayas</td>
+                            <td>Electronics</td>
+                            <td style="text-align: right;">12</td>
+                            <td style="text-align: right;">₱ 8,200.00</td>
+                            <td style="text-align: right;" class="highlight-green">₱ 98,400.00</td>
+                        </tr>
+                        <tr>
+                            <td>TXN-103</td>
+                            <td>Mindanao</td>
+                            <td>Electronics</td>
+                            <td style="text-align: right;" class="highlight-red">5</td>
+                            <td style="text-align: right;">₱ 15,000.00</td>
+                            <td style="text-align: right;" class="highlight-green">₱ 75,000.00</td>
+                        </tr>
+                        <tr>
+                            <td>TXN-101</td>
+                            <td>Luzon</td>
+                            <td>Electronics</td>
+                            <td style="text-align: right;">18</td>
+                            <td style="text-align: right;">₱ 2,500.00</td>
+                            <td style="text-align: right;" class="highlight-green">₱ 45,000.00</td>
+                        </tr>
+                        <tr>
+                            <td>TXN-107</td>
+                            <td>Luzon</td>
+                            <td>Office Supplies</td>
+                            <td style="text-align: right;">25</td>
+                            <td style="text-align: right;">₱ 1,100.00</td>
+                            <td style="text-align: right;">₱ 27,500.00</td>
+                        </tr>
+                        <tr>
+                            <td>TXN-106</td>
+                            <td>Mindanao</td>
+                            <td>Office Supplies</td>
+                            <td style="text-align: right;" class="highlight-red">6</td>
+                            <td style="text-align: right;">₱ 3,200.00</td>
+                            <td style="text-align: right;">₱ 19,200.00</td>
+                        </tr>
+                        <tr>
+                            <td>TXN-104</td>
+                            <td>Luzon</td>
+                            <td>Accessories</td>
+                            <td style="text-align: right;">40</td>
+                            <td style="text-align: right;">₱ 350.00</td>
+                            <td style="text-align: right;">₱ 14,000.00</td>
+                        </tr>
+                        <tr>
+                            <td>TXN-102</td>
+                            <td>Visayas</td>
+                            <td>Office Supplies</td>
+                            <td style="text-align: right;" class="highlight-red">7</td>
+                            <td style="text-align: right;">₱ 450.00</td>
+                            <td style="text-align: right;">₱ 3,150.00</td>
+                        </tr>
+                        <tr style="background-color: #f3f4f6; font-weight: bold;">
+                            <td colspan="5" style="text-align: right;">Grand Total:</td>
+                            <td style="text-align: right; color: #107c41;">₱ 282,250.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- CHART VISUALIZATION REFERENCE -->
+            <div class="chart-mockup">
+                <h4 style="margin: 0; color: #111827;">Sample Visualization: Total Sales by Region</h4>
+                <div class="chart-bar-wrapper">
+                    <div style="text-align: center;">
+                        <div class="chart-bar" style="height: 120px;">₱86.5K</div>
+                        <span style="font-size: 0.8rem; color: #374151; font-weight: bold;">Luzon</span>
+                    </div>
+                    <div style="text-align: center;">
+                        <div class="chart-bar" style="height: 140px;">₱101.5K</div>
+                        <span style="font-size: 0.8rem; color: #374151; font-weight: bold;">Visayas</span>
+                    </div>
+                    <div style="text-align: center;">
+                        <div class="chart-bar" style="height: 130px;">₱94.2K</div>
+                        <span style="font-size: 0.8rem; color: #374151; font-weight: bold;">Mindanao</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUBMISSION SECTION -->
+            <div class="upload-section">
+                <h3 style="margin-top: 0; color: #1a0b1c;">Submit Final Excel Workbook</h3>
+                <p style="color: #4b5563; font-size: 0.9rem;">Upload your finished <strong>.xlsx</strong> workbook containing your sorted data, conditional formatting, and chart visualization.</p>
+                
+                <input type="file" id="fileUpload" style="margin-bottom: 15px;" accept=".xlsx,.xls"><br>
+                <button onclick="submitFinalAssessment()" class="btn-action">Submit & Complete Excel Course 🎉</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        &copy; 2026 GrindMind. All rights reserved.
+    </footer>
+
+    <script>
+        function copyRawData() {
+            const rawText = `Transaction ID,Region,Category,Quantity,Unit Price (PHP)
+TXN-101,Luzon,Electronics,18,2500.00
+TXN-102,Visayas,Office Supplies,7,450.00
+TXN-103,Mindanao,Electronics,5,15000.00
+TXN-104,Luzon,Accessories,40,350.00
+TXN-105,Visayas,Electronics,12,8200.00
+TXN-106,Mindanao,Office Supplies,6,3200.00
+TXN-107,Luzon,Office Supplies,25,1100.00`;
+
+            navigator.clipboard.writeText(rawText);
+            alert("Raw CSV sales data copied to clipboard!");
+        }
+
+        function submitFinalAssessment() {
+            // Save completion state for Excel Course completion
+            localStorage.setItem('excel_quiz3_completed', 'true');
+            alert("Congratulations! You have completed the Microsoft Excel Course!");
+            window.location.href = 'excel-course.html';
+        }
+    </script>
+</body>
+</html>

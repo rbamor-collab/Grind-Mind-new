@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRINDMIND.COM - Microsoft Word Course</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Lock & Unlock Styling */
+        .lesson-item {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .lesson-link {
+            text-decoration: none;
+            font-weight: 600;
+            color: #2c1a2e;
+            transition: color 0.3s;
+        }
+        .lesson-link:hover {
+            color: #ff75c3;
+        }
+        .locked {
+            color: #9ca3af !important;
+            pointer-events: none; /* Hindi ma-click */
+            cursor: not-allowed;
+            text-decoration: none !important;
+        }
+        .badge-status {
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .badge-locked {
+            background-color: #f3f4f6;
+            color: #9ca3af;
+        }
+        .badge-unlocked {
+            background-color: #d1fae5;
+            color: #059669;
+        }
+        .badge-completed {
+            background-color: #fce7f3;
+            color: #db2777;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo-container">
+            <img src="image/logo.png" alt="GrindMind Logo" class="site-logo">
+            <span class="logo-text">GRINDMIND.COM</span>
+        </div>
+        <div class="nav-buttons" style="display: flex; gap: 10px;">
+            <a href="dashboard.html" class="btn-logout" style="text-decoration: none;">&larr; Back to Courses</a>
+            <a href="index.html" class="btn-logout" style="text-decoration: none;">&larr; Back to Home</a>
+        </div>
+    </header>
+
+    <main class="main-container" style="max-width: 900px; margin-top: 20px;">
+        <!-- COURSE HEADER -->
+        <div class="course-card" style="margin-bottom: 25px;">
+            <span class="course-header-tag word-tag">COURSE 1: MICROSOFT WORD</span>
+            <h2 style="margin: 10px 0 5px 0; color: #2c1a2e;">Master document creation, formatting, page layouts, and professional reports.</h2>
+            <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 15px;">Progress Bar: <span id="progress-text">0 / 9 Items Completed</span></p>
+            
+            <div style="width: 100%; background-color: #f3e8ff; border-radius: 10px; height: 10px; overflow: hidden;">
+                <div id="progress-bar" style="width: 0%; background-color: #ff75c3; height: 100%; transition: width 0.4s;"></div>
+            </div>
+            <span id="progress-percent" style="font-size: 0.8rem; color: #ff75c3; font-weight: bold; margin-top: 5px; display: block;">0%</span>
+        </div>
+
+        <h3 style="color: #ffffff; letter-spacing: 1px; margin-bottom: 15px;">COURSE MODULES</h3>
+
+        <!-- MODULE 1 -->
+        <div class="course-card" style="margin-bottom: 20px;">
+            <h4 style="margin: 0 0 15px 0; color: #2c1a2e; font-size: 1.1rem;">MODULE 1: Document Basics & Ribbon Navigation</h4>
+            
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <div class="lesson-item">
+                    <span id="badge-1-1" class="badge-status badge-unlocked">UNLOCKED</span>
+                    <a href="word-lesson1-1.html" class="lesson-link">Lesson 1.1: Understanding the Word Interface & Ribbon</a>
+                </div>
+
+                <div class="lesson-item">
+                    <span id="badge-1-2" class="badge-status badge-locked">🔒 LOCKED</span>
+                    <a href="word-lesson1-2.html" id="link-1-2" class="lesson-link locked">Lesson 1.2: Font Formatting, Paragraph Alignment & Spacing</a>
+                </div>
+
+                <div class="lesson-item">
+                    <span id="badge-quiz-1" class="badge-status badge-locked">🔒 LOCKED</span>
+                    <a href="word-quiz1.html" id="link-quiz-1" class="lesson-link locked" style="color: #ff75c3;">Quiz 1: Module 1 Knowledge Check</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODULE 2 -->
+        <div class="course-card" style="margin-bottom: 20px;">
+            <h4 style="margin: 0 0 15px 0; color: #2c1a2e; font-size: 1.1rem;">MODULE 2: Page Layout, Tables & Media</h4>
+            
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <div class="lesson-item">
+                    <span id="badge-2-1" class="badge-status badge-locked">🔒 LOCKED</span>
+                    <a href="word-lesson2-1.html" id="link-2-1" class="lesson-link locked">Lesson 2.1: Margins, Orientation & Page Setup</a>
+                </div>
+
+                <div class="lesson-item">
+                    <span id="badge-2-2" class="badge-status badge-locked">🔒 LOCKED</span>
+                    <a href="word-lesson2-2.html" id="link-2-2" class="lesson-link locked">Lesson 2.2: Inserting Tables, Images & Shapes</a>
+                </div>
+
+                <div class="lesson-item">
+                    <span id="badge-quiz-2" class="badge-status badge-locked">🔒 LOCKED</span>
+                    <a href="word-quiz2.html" id="link-quiz-2" class="lesson-link locked" style="color: #ff75c3;">Quiz 2: Module 2 Knowledge Check</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODULE 3 -->
+        <div class="course-card" style="margin-bottom: 20px;">
+            <h4 style="margin: 0 0 15px 0; color: #2c1a2e; font-size: 1.1rem;">MODULE 3: Advanced Formatting & Document Sharing</h4>
+            
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <div class="lesson-item">
+                    <span id="badge-3-1" class="badge-status badge-locked">🔒 LOCKED</span>
+                    <a href="word-lesson3-1.html" id="link-3-1" class="lesson-link locked">Lesson 3.1: Styles, Table of Contents & Headings</a>
+                </div>
+
+                <div class="lesson-item">
+                    <span id="badge-3-2" class="badge-status badge-locked">🔒 LOCKED</span>
+                    <a href="word-lesson3-2.html" id="link-3-2" class="lesson-link locked">Lesson 3.2: Exporting as PDF & Printing Options</a>
+                </div>
+
+                <div class="lesson-item">
+                    <span id="badge-quiz-3" class="badge-status badge-locked">🔒 LOCKED</span>
+                    <a href="word-quiz3.html" id="link-quiz-3" class="lesson-link locked" style="color: #ff75c3;">Quiz 3: Final Module Knowledge Check</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JAVASCRIPT FOR ALL MODULES (1, 2, & 3) PROGRESS -->
+    <script>
+        function checkProgress() {
+            // Keys
+            const l1_1 = localStorage.getItem('word_lesson1_1_completed') === 'true';
+            const l1_2 = localStorage.getItem('word_lesson1_2_completed') === 'true';
+            const q1   = localStorage.getItem('word_quiz1_completed') === 'true';
+
+            const l2_1 = localStorage.getItem('word_lesson2_1_completed') === 'true';
+            const l2_2 = localStorage.getItem('word_lesson2_2_completed') === 'true';
+            const q2   = localStorage.getItem('word_quiz2_completed') === 'true';
+
+            const l3_1 = localStorage.getItem('word_lesson3_1_completed') === 'true';
+            const l3_2 = localStorage.getItem('word_lesson3_2_completed') === 'true';
+            const q3   = localStorage.getItem('word_quiz3_completed') === 'true';
+
+            let completed = 0;
+
+            // Helper function to mark complete/unlock
+            function updateItem(done, badgeId, linkId, nextBadgeId, nextLinkId) {
+                if (done) {
+                    completed++;
+                    document.getElementById(badgeId).className = 'badge-status badge-completed';
+                    document.getElementById(badgeId).innerText = 'COMPLETED ✓';
+
+                    if (nextLinkId) {
+                        document.getElementById(nextLinkId).classList.remove('locked');
+                        document.getElementById(nextBadgeId).className = 'badge-status badge-unlocked';
+                        document.getElementById(nextBadgeId).innerText = 'UNLOCKED';
+                    }
+                }
+            }
+
+            // Chain progression
+            updateItem(l1_1, 'badge-1-1', 'link-1-1', 'badge-1-2', 'link-1-2');
+            updateItem(l1_2, 'badge-1-2', 'link-1-2', 'badge-quiz-1', 'link-quiz-1');
+            updateItem(q1,   'badge-quiz-1', 'link-quiz-1', 'badge-2-1', 'link-2-1');
+
+            updateItem(l2_1, 'badge-2-1', 'link-2-1', 'badge-2-2', 'link-2-2');
+            updateItem(l2_2, 'badge-2-2', 'link-2-2', 'badge-quiz-2', 'link-quiz-2');
+            updateItem(q2,   'badge-quiz-2', 'link-quiz-2', 'badge-3-1', 'link-3-1');
+
+            updateItem(l3_1, 'badge-3-1', 'link-3-1', 'badge-3-2', 'link-3-2');
+            updateItem(l3_2, 'badge-3-2', 'link-3-2', 'badge-quiz-3', 'link-quiz-3');
+            updateItem(q3,   'badge-quiz-3', 'link-quiz-3', null, null);
+
+            // Update Progress Bar (9 items total)
+            const percent = Math.round((completed / 9) * 100);
+            document.getElementById('progress-bar').style.width = percent + '%';
+            document.getElementById('progress-percent').innerText = percent + '%';
+            document.getElementById('progress-text').innerText = completed + ' / 9 Items Completed';
+        }
+
+        checkProgress();
+    </script>
+</body>
+</html>

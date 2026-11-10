@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRINDMIND</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Modern Single-Page Landing Layout */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1a0b1c; /* Dark mauve background */
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #1a0b1c;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .site-logo {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #ff75c3;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-login {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-signup {
+            background-color: #ff3385;
+            color: #ffffff;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-signup:hover {
+            background-color: #e60067;
+        }
+
+        /* Container & Floating Card */
+        .content-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .tab-content {
+            display: none;
+            width: 100%;
+            max-width: 680px;
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-card {
+            background-color: #ffffff;
+            color: #1a0b1c;
+            border-radius: 16px;
+            padding: 45px 40px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: #fce7f3;
+            color: #db2777;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #111827;
+            margin: 0 0 15px 0;
+            line-height: 1.25;
+        }
+
+        .hero-subtitle {
+            font-size: 0.95rem;
+            color: #4b5563;
+            line-height: 1.6;
+            margin: 0 0 30px 0;
+            padding: 0 10px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn-start {
+            background-color: #ff3385;
+            color: #ffffff;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn-start:hover {
+            background-color: #e60067;
+        }
+
+        .btn-learn {
+            background-color: #f3f4f6;
+            color: #374151;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn-learn:hover {
+            background-color: #e5e7eb;
+        }
+
+        /* Course Grid Inside Tab */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .course-item {
+            background: #f9fafb;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            text-align: left;
+        }
+
+        .course-item h4 {
+            margin: 0 0 8px 0;
+            color: #111827;
+        }
+
+        .course-item p {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin: 0 0 12px 0;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #6b7280;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR WITH LOGO INTEGRATION -->
+    <header class="navbar">
+        <div class="logo-container">
+            <img src="image/logo.png" alt="GrindMind Logo" class="site-logo">
+            <span class="logo-text">GRINDMIND</span>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a onclick="showTab('home')" id="link-home" class="active">Home</a></li>
+                <li><a onclick="showTab('courses')" id="link-courses">Courses</a></li>
+                <li><a onclick="showTab('about')" id="link-about">About Us</a></li>
+                <li><a onclick="showTab('faq')" id="link-faq">FAQ</a></li>
+                <li><a onclick="showTab('contact')" id="link-contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="login.html" class="btn-login">Log In</a>
+            <a href="signup.html" class="btn-signup">Sign Up for Free</a>
+        </div>
+    </header>
+
+    <!-- CONTENT AREA -->
+    <main class="content-container">
+
+        <!-- 1. HOME TAB (Default Displayed) -->
+        <div id="tab-home" class="tab-content active">
+            <div class="hero-card">
+                <h1 class="hero-title">Master Microsoft Office Faster and Smarter for Free!</h1>
+                <p class="hero-subtitle">
+                    Step-by-step curriculum featuring interactive lessons, quizzes, and hands-on challenges designed to build essential digital skills for school and the workplace.
+                </p>
+                <div class="hero-buttons">
+                    <a onclick="showTab('courses')" class="btn-start">START LEARNING</a>
+                    <a onclick="showTab('about')" class="btn-learn">Learn More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. COURSES TAB -->
+        <div id="tab-courses" class="tab-content">
+            <div class="hero-card" style="text-align: left;">
+                <span class="badge">Available Programs</span>
+                <h2 style="margin-top: 0; color: #111827;">Our Free Courses</h2>
+                <p style="color: #4b5563; font-size: 0.9rem;">Select a topic to start building your skills with step-by-step guidance and quizzes.</p>
+                
+                <div class="courses-grid">
+                    <div class="course-item">
+                        <h4>Microsoft Word</h4>
+                        <p>Learn document creation, formatting, styles, and layout tools.</p>
+                        <a href="word-course.html" style="color: #ff3385; font-weight: bold; text-decoration: none; font-size: 0.85rem;">View Course &rarr;</a>
+                    </div>
+                    <div class="course-item">
+                        <h4>Microsoft Excel</h4>
+                        <p>Master formulas, functions, spreadsheets, and data presentation.</p>
+                        <a href="excel-course.html" style="color: #ff3385; font-weight: bold; text-decoration: none; font-size: 0.85rem;">View Course &rarr;</a>
+                    </div>
+                    <div class="course-item">
+                        <h4>PowerPoint</h4>
+                        <p>Create impactful slides, animations, and professional presentations.</p>
+                        <a href="powerpoint-course.html" style="color: #ff3385; font-weight: bold; text-decoration: none; font-size: 0.85rem;">View Course &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. ABOUT US TAB -->
+        <div id="tab-about" class="tab-content">
+            <div class="hero-card" style="text-align: left;">
+                <span class="badge">About GrindMind</span>
+                <h2 style="margin-top: 0; color: #111827;">Empowering Digital Skills</h2>
+                <p style="color: #4b5563; line-height: 1.6;">
+                    GrindMind is a free interactive e-learning platform committed to helping students and professionals master essential productivity software. Our curriculum focuses on practical exercises, instant feedback, and real-world application.
+                </p>
+            </div>
+        </div>
+
+        <!-- 4. FAQ TAB -->
+        <div id="tab-faq" class="tab-content">
+            <div class="hero-card" style="text-align: left;">
+                <span class="badge">Frequently Asked Questions</span>
+                <h2 style="margin-top: 0; color: #111827;">Got Questions?</h2>
+                <div style="margin-top: 15px; color: #4b5563; font-size: 0.9rem;">
+                    <p><strong>Is GrindMind really free?</strong><br>Yes, all lesson modules and practice quizzes are 100% free.</p>
+                    <p><strong>Do I need to install Microsoft Office?</strong><br>Having MS Office installed helps you practice directly, but lessons can be reviewed online anytime.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. CONTACT TAB -->
+        <div id="tab-contact" class="tab-content">
+            <div class="hero-card" style="text-align: left;">
+                <span class="badge">Get in Touch</span>
+                <h2 style="margin-top: 0; color: #111827;">Contact Us</h2>
+                <p style="color: #4b5563; font-size: 0.9rem;">Have feedback or need assistance? Reach out to our support team.</p>
+                <p style="color: #111827; font-weight: 600;">Email: support@grindmind.com</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        &copy; 2026 GrindMind. All rights reserved.
+    </footer>
+
+    <!-- JAVASCRIPT FOR TAB SWITCHING -->
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Remove active class from all nav links
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => link.classList.remove('active'));
+
+            // Show selected tab
+            const targetTab = document.getElementById('tab-' + tabName);
+            if (targetTab) {
+                targetTab.classList.add('active');
+            }
+
+            // Highlight active link in navbar
+            const targetLink = document.getElementById('link-' + tabName);
+            if (targetLink) {
+                targetLink.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

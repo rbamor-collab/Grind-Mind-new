@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate of Completion - GrindMind</title>
+
+    <!-- LIBRARIES PARA SA DIRECT IMAGE AT PDF DOWNLOAD -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:wght@400;500;700&family=Great+Vibes&display=swap');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1a0b1c;
+            font-family: 'Montserrat', sans-serif;
+            color: #1a0b1c;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* NAVIGATION CONTROL BAR WITH BOTH BUTTONS */
+        .controls-bar {
+            margin: 20px 0;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn-download-img {
+            background-color: #ff3385;
+            color: #ffffff;
+            border: none;
+            padding: 12px 22px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 51, 133, 0.4);
+        }
+
+        .btn-download-img:hover {
+            background-color: #e60067;
+            transform: translateY(-2px);
+        }
+
+        .btn-download-pdf {
+            background-color: #7e22ce;
+            color: #ffffff;
+            border: none;
+            padding: 12px 22px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(126, 34, 206, 0.4);
+        }
+
+        .btn-download-pdf:hover {
+            background-color: #6b21a8;
+            transform: translateY(-2px);
+        }
+
+        .btn-back {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.95rem;
+            opacity: 0.8;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+
+        .btn-back:hover {
+            opacity: 1;
+        }
+
+        /* CERTIFICATE CANVAS DESIGN */
+        .certificate-container {
+            width: 900px;
+            height: 635px;
+            background: #ffffff;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border-radius: 8px;
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+
+        .certificate-border {
+            width: 100%;
+            height: 100%;
+            border: 10px solid #1a0b1c;
+            padding: 15px;
+            position: relative;
+            background: #fff;
+        }
+
+        .certificate-inner-border {
+            width: 100%;
+            height: 100%;
+            border: 2px solid #ff3385;
+            padding: 25px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* LOGO HEADER & WATERMARK */
+        .header-logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 5px;
+        }
+
+        .brand-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, #ff3385, #7e22ce);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-weight: 900;
+            font-size: 1.4rem;
+        }
+
+        .logo-brand-text {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #1a0b1c;
+            letter-spacing: 2px;
+        }
+
+        .watermark-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 14rem;
+            font-weight: 900;
+            color: #1a0b1c;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+            user-select: none;
+        }
+
+        .cert-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.1rem;
+            font-weight: 800;
+            letter-spacing: 4px;
+            color: #1a0b1c;
+            margin: 4px 0 0 0;
+            text-transform: uppercase;
+        }
+
+        .cert-subtitle {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: #ff3385;
+            font-weight: 700;
+            margin-top: 3px;
+            text-transform: uppercase;
+        }
+
+        .recipient-label {
+            font-size: 0.95rem;
+            color: #4b5563;
+            margin-top: 15px;
+        }
+
+        .recipient-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.8rem;
+            color: #ff3385;
+            margin: 2px 0;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 2px;
+            min-width: 480px;
+            display: inline-block;
+        }
+
+        .cert-reason {
+            font-size: 0.92rem;
+            color: #374151;
+            max-width: 640px;
+            line-height: 1.5;
+            margin: 8px 0;
+        }
+
+        .course-title-display {
+            font-weight: 700;
+            color: #1a0b1c;
+        }
+
+        .cert-footer {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 10px;
+            padding: 0 20px;
+        }
+
+        .footer-block {
+            text-align: center;
+        }
+
+        .signature-line {
+            width: 180px;
+            border-bottom: 1.5px solid #1a0b1c;
+            margin-bottom: 6px;
+        }
+
+        .footer-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #4b5563;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .badge-seal {
+            width: 75px;
+            height: 75px;
+            background: linear-gradient(135deg, #ff3385, #7e22ce);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 800;
+            font-size: 0.65rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CONTROL BAR WITH BOTH OPTIONS -->
+    <div class="controls-bar">
+        <a href="index.html" class="btn-back">&larr; Back to Dashboard</a>
+        <button class="btn-download-img" onclick="downloadAsImage()">Download Image 🖼️</button>
+        <button class="btn-download-pdf" onclick="downloadAsPDF()">Download PDF 📄</button>
+    </div>
+
+    <!-- MAIN CERTIFICATE CANVAS -->
+    <div class="certificate-container" id="certificateCanvas">
+        <div class="watermark-bg">GM</div>
+
+        <div class="certificate-border">
+            <div class="certificate-inner-border">
+
+                <!-- HEADER LOGO & BRAND -->
+                <div>
+                    <div class="header-logo-container">
+                        <img src="logo.png"GrindMind Logo" style="height: 45px;" onerror="this.style.display='none'; document.getElementById('fallbackIcon').style.display='flex';">
+                        <div id="fallbackIcon" class="brand-icon" style="display:none;">GM</div>
+                        <span class="logo-brand-text">GRINDMIND</span>
+                    </div>
+                    <h1 class="cert-title">Certificate of Completion</h1>
+                    <div class="cert-subtitle">E-Learning Platform</div>
+                </div>
+
+                <!-- RECIPIENT NAME -->
+                <div>
+                    <div class="recipient-label">This certificate is proudly presented to</div>
+                    <div class="recipient-name" id="displayName">-- Loading Name --</div>
+                    <div class="cert-reason">
+                        for successfully completing all practical hands-on assessments, quizzes, and modules in the course
+                        <br>
+                        <span class="course-title-display" id="displayCourse">Microsoft Office Masterclass</span>.
+                    </div>
+                </div>
+
+                <!-- FOOTER -->
+                <div class="cert-footer">
+                    <div class="footer-block">
+                        <div style="font-weight: bold; font-size: 0.9rem; margin-bottom: 2px;" id="displayDate">-- -- ----</div>
+                        <div class="signature-line"></div>
+                        <div class="footer-label">Date Completed</div>
+                    </div>
+
+                    <div class="badge-seal">
+                        OFFICIAL<br>VERIFIED
+                    </div>
+
+                    <div class="footer-block">
+                        <div style="font-family: 'Great Vibes', cursive; font-size: 1.6rem; color: #1a0b1c; line-height: 0.8;">GrindMind</div>
+                        <div class="signature-line" style="margin-top: 4px;"></div>
+                        <div class="footer-label">Course Director</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // 1. DYNAMIC COURSE TITLE LOAD FROM URL PARAMETER
+            const urlParams = new URLSearchParams(window.location.search);
+            const course = urlParams.get('course') || 'Microsoft Office Masterclass';
+            document.getElementById('displayCourse').innerText = course;
+
+            // 2. AUTOMATIC GET STUDENT NAME FROM LOCALSTORAGE
+            const studentName = localStorage.getItem('student_name') || 
+                                localStorage.getItem('user_fullname') || 
+                                localStorage.getItem('username') || 
+                                localStorage.getItem('user_name') || 
+                                'Juan Dela Cruz';
+
+            document.getElementById('displayName').innerText = studentName;
+
+            // 3. AUTOMATIC CURRENT DATE GENERATOR
+            const today = new Date();
+            const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('displayDate').innerText = today.toLocaleDateString("en-US", dateOptions);
+        });
+
+        // FUNCTION 1: SAVE AS HIGH-RES IMAGE (.PNG)
+        function downloadAsImage() {
+            const certElement = document.getElementById('certificateCanvas');
+            const studentName = document.getElementById('displayName').innerText.replace(/\s+/g, '_');
+
+            html2canvas(certElement, {
+                scale: 2,
+                useCORS: true,
+                backgroundColor: "#ffffff"
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = `Certificate_${studentName}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        }
+
+        // FUNCTION 2: SAVE AS DIRECT PDF FILE (.PDF)
+        function downloadAsPDF() {
+            const certElement = document.getElementById('certificateCanvas');
+            const studentName = document.getElementById('displayName').innerText.replace(/\s+/g, '_');
+
+            const options = {
+                margin:       0,
+                filename:     `Certificate_${studentName}.pdf`,
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true },
+                jsPDF:        { unit: 'px', format: [900, 635], orientation: 'landscape' }
+            };
+
+            html2pdf().set(options).from(certElement).save();
+        }
+    </script>
+</body>
+</html>

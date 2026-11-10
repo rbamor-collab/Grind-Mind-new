@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerPoint Module 2 Hands-On Challenge - GrindMind</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1a0b1c;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #1a0b1c;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .site-logo {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        .challenge-container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+
+        .challenge-card {
+            background-color: #ffffff;
+            color: #1a0b1c;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            margin-bottom: 25px;
+        }
+
+        .badge-challenge {
+            display: inline-block;
+            background-color: #ffedd5;
+            color: #c2410c;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .challenge-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #111827;
+            margin: 0 0 10px 0;
+        }
+
+        .requirements-list {
+            background-color: #fff7ed;
+            border-left: 4px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .requirements-list ul {
+            margin: 10px 0 0 0;
+            padding-left: 20px;
+            color: #374151;
+        }
+
+        .requirements-list li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .raw-data-box {
+            background-color: #2c1a2e;
+            color: #f3e8ff;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            position: relative;
+            margin: 15px 0;
+        }
+
+        .btn-copy {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #ff3385;
+            color: #fff;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .btn-copy:hover {
+            background-color: #e60067;
+        }
+
+        .slides-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .slide-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 20px;
+            background: #fafafa;
+            border-top: 4px solid #f97316;
+        }
+
+        .slide-card h4 {
+            margin: 0 0 10px 0;
+            color: #c2410c;
+            font-size: 0.95rem;
+        }
+
+        .slide-card p {
+            font-size: 0.85rem;
+            color: #4b5563;
+            margin: 0 0 8px 0;
+            line-height: 1.4;
+        }
+
+        .upload-section {
+            background-color: #f3e8ff;
+            border: 2px dashed #ff75c3;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn-action {
+            background-color: #ff3385;
+            color: #ffffff;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn-action:hover {
+            background-color: #e60067;
+        }
+
+        .btn-back {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #6b7280;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo-container">
+            <img src="image/logo.png" alt="GrindMind Logo" class="site-logo">
+            <span class="logo-text">GRINDMIND</span>
+        </div>
+        <a href="powerpoint-course.html" class="btn-back">&larr; Back to PowerPoint Course</a>
+    </header>
+
+    <main class="challenge-container">
+        <div class="challenge-card">
+            <span class="badge-challenge">PowerPoint Module 2 &bull; Hands-On Challenge</span>
+            <h1 class="challenge-title">Designing a 5-Slide Pitch Deck</h1>
+            <p style="color: #4b5563; line-height: 1.6;">
+                Put your visual design skills into practice! Apply color themes, typography rules, SmartArt graphics, and icons from Module 2 to transform the raw proposal text below into an engaging, professional 5-slide pitch deck.
+            </p>
+
+            <div class="requirements-list">
+                <h3 style="margin: 0; color: #111827;">📋 Instructions for Learners:</h3>
+                <ul>
+                    <li><strong>Theme & Hierarchy:</strong> Review the 5-slide raw data below and set up a consistent color theme and font hierarchy across all slides.</li>
+                    <li><strong>SmartArt & Icons:</strong> Use PowerPoint icons and SmartArt graphics to visually represent data and process steps (Lessons 2.1 & 2.2).</li>
+                    <li><strong>Design Polish:</strong> Ensure proper contrast, alignment, and whitespace across all 5 slides.</li>
+                    <li><strong>Submission:</strong> Save your presentation file (.pptx) and upload it using the form below.</li>
+                </ul>
+            </div>
+
+            <h3 style="color: #111827; margin-top: 30px;">📄 Raw Pitch Deck Data:</h3>
+            <div class="raw-data-box" id="rawData">
+<button class="btn-copy" onclick="copyRawData()">Copy Raw Text</button>Slide 1: Title & Introduction
+• Title: Next-Gen Administrative Services Proposal
+• Subtitle: Elevating Workplace Efficiency & Digital Workflows
+• Presenter: [Your Name], Senior Office Administrator
+
+Slide 2: The Core Problem
+• Slow document processing due to fragmented filing systems.
+• Inconsistent formatting in departmental reports.
+• High rate of manual data entry errors.
+
+Slide 3: Proposed 3-Step Workflow Solution
+• Step 1: Standardize templates across Word, Excel, and PowerPoint.
+• Step 2: Implement automated validation and tracking rules.
+• Step 3: Centralize cloud storage for instant document retrieval.
+
+Slide 4: Expected Impact & Metrics
+• 25% reduction in report generation time.
+• 99% accuracy in inventory and financial tracking.
+• Enhanced team collaboration and communication.
+
+Slide 5: Conclusion & Next Steps
+• Summary: Modern tools drive modern results.
+• Call to Action: Approval of pilot testing phase next month.
+• Open floor for stakeholder questions and feedback.
+            </div>
+
+            <h3 style="color: #111827; margin-top: 30px;">👁️ Target Slide Structure Reference:</h3>
+            <div class="slides-grid">
+                <div class="slide-card">
+                    <h4>Slide 1: Title Slide</h4>
+                    <p><strong>Title:</strong> Next-Gen Admin Services Proposal</p>
+                    <p><strong>Subtitle:</strong> Elevating Workplace Efficiency</p>
+                </div>
+                <div class="slide-card">
+                    <h4>Slide 2: Core Problem</h4>
+                    <p>&bull; Slow document processing</p>
+                    <p>&bull; In

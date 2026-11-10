@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerPoint Final Assessment - GrindMind</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1a0b1c;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #1a0b1c;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .site-logo {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        .challenge-container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+
+        .challenge-card {
+            background-color: #ffffff;
+            color: #1a0b1c;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            margin-bottom: 25px;
+        }
+
+        .badge-challenge {
+            display: inline-block;
+            background-color: #ffedd5;
+            color: #c2410c;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .challenge-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #111827;
+            margin: 0 0 10px 0;
+        }
+
+        .requirements-list {
+            background-color: #fff7ed;
+            border-left: 4px solid #f97316;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .requirements-list ul {
+            margin: 10px 0 0 0;
+            padding-left: 20px;
+            color: #374151;
+        }
+
+        .requirements-list li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .raw-data-box {
+            background-color: #2c1a2e;
+            color: #f3e8ff;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            position: relative;
+            margin: 15px 0;
+        }
+
+        .btn-copy {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #ff3385;
+            color: #fff;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .btn-copy:hover {
+            background-color: #e60067;
+        }
+
+        .slides-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .slide-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 20px;
+            background: #fafafa;
+            border-top: 4px solid #ea580c;
+        }
+
+        .slide-card h4 {
+            margin: 0 0 10px 0;
+            color: #c2410c;
+            font-size: 0.95rem;
+        }
+
+        .slide-card p {
+            font-size: 0.85rem;
+            color: #4b5563;
+            margin: 0 0 8px 0;
+            line-height: 1.4;
+        }
+
+        .upload-section {
+            background-color: #f3e8ff;
+            border: 2px dashed #ff75c3;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn-action {
+            background-color: #ff3385;
+            color: #ffffff;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn-action:hover {
+            background-color: #e60067;
+        }
+
+        .btn-back {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #6b7280;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo-container">
+            <img src="image/logo.png" alt="GrindMind Logo" class="site-logo">
+            <span class="logo-text">GRINDMIND</span>
+        </div>
+        <a href="powerpoint-course.html" class="btn-back">&larr; Back to PowerPoint Course</a>
+    </header>
+
+    <main class="challenge-container">
+        <div class="challenge-card">
+            <span class="badge-challenge">PowerPoint Module 3 &bull; Final Course Assessment</span>
+            <h1 class="challenge-title">Corporate Productivity Training Deck & Presentation</h1>
+            <p style="color: #4b5563; line-height: 1.6;">
+                Apply advanced presentation setup, slide transitions, animation timing, and export features from Module 3 to transform the provided administrative guidelines into a complete training presentation.
+            </p>
+
+            <div class="requirements-list">
+                <h3 style="margin: 0; color: #111827;">📋 Final Assessment Requirements:</h3>
+                <ul>
+                    <li><strong>Slide Hierarchy:</strong> Enforce consistent document hierarchy using built-in heading styles.</li>
+                    <li><strong>Table Integration:</strong> Format the <em>Daily Administrative Routine</em> into a formatted slide table.</li>
+                    <li><strong>Presenter Guidelines:</strong> Structure presenter tips cleanly using visual bullet points.</li>
+                    <li><strong>Exporting:</strong> Save your presentation file (.pptx or .pdf) and upload below to finish the course.</li>
+                </ul>
+            </div>
+
+            <h3 style="color: #111827; margin-top: 30px;">📄 Raw Content to Copy:</h3>
+            <div class="raw-data-box" id="rawData">
+<button class="btn-copy" onclick="copyRawData()">Copy Raw Text</button>Enforce consistent document hierarchy using built-in heading styles.
+Provide ongoing staff upskilling through structured e-learning modules.
+
+Expected Benefits of Workflow Integration:
+• Improves document turnaround speed by 15 percent.
+• Increases daily task completion accuracy.
+• Reduces administrative clutter and duplicate files.
+• Lowers stress levels and boosts team morale.
+• Promotes seamless cross-departmental collaboration.
+
+Daily Administrative Routine:
+Time | Activity
+8:00 AM – Review daily correspondence and urgent emails
+9:00 AM – Process master sales and inventory records in Excel
+11:00 AM – Attend departmental alignment and status meeting
+1:00 PM – Format formal administrative reports in Microsoft Word
+3:00 PM – Update presentation decks and training materials
+5:00 PM – Archive files and prepare next day's schedule
+
+Tips for Presenters:
+• Balance text-heavy slides with clean visual bullet points.
+• Avoid reading directly from the slides during delivery.
+• Limit unnecessary animations and visual distractions.
+• Maintain professional posture, tone, and eye contact.
+• Ensure smooth slide transitions and precise timing.
+
+Closing Message:
+"An organized administrative workflow is the backbone of an efficient and productive corporate environment."
+            </div>
+
+            <h3 style="color: #111827; margin-top: 30px;">👁️ Target Structure Reference:</h3>
+            <div class="slides-grid">
+                <div class="slide-card">
+                    <h4>Slide 1: Recommendations</h4>
+                    <p>&bull; Enforce heading hierarchy</p>
+                    <p>&bull; Staff upskilling via e-learning</p>
+                </div>
+
+                <div class="slide-card">
+                    <h4>Slide 2: Expected Benefits</h4>
+                    <p>&bull; 15% speed improvement</p>
+                    <p>&bull; Accuracy & morale boost</p>
+                </div>
+
+                <div class="slide-card">
+                    <h4>Slide 3: Daily Routine</h4>
+                    <p>Structured Table from 8:00 AM to 5:00 PM</p>
+                </div>
+
+                <div class="slide-card">
+                    <h4>Slide 4: Tips for Presenters</h4>
+                    <p>&bull; Balance text with visuals</p>
+                    <p>&bull; Avoid reading directly</p>
+                </div>
+
+                <div class="slide-card">
+                    <h4>Slide 5: Closing Quote</h4>
+                    <p style="font-style: italic; font-weight: bold; color: #111827;">"An organized administrative workflow is the backbone of an efficient corporate environment."</p>
+                </div>
+            </div>
+
+            <div class="upload-section">
+                <h3 style="margin-top: 0; color: #1a0b1c;">Submit Presentation & Complete Course</h3>
+                <p style="color: #4b5563; font-size: 0.9rem;">Upload your final exported <strong>.pptx</strong> or <strong>.pdf</strong> file below to finish all course requirements!</p>
+                
+                <input type="file" id="fileUpload" style="margin-bottom: 15px;" accept=".pptx,.pdf"><br>
+                <button onclick="submitFinalAssessment()" class="btn-action">Submit & Complete PowerPoint Course 🎉</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        &copy; 2026 GrindMind. All rights reserved.
+    </footer>
+
+    <script>
+        function copyRawData() {
+            const rawText = `Enforce consistent document hierarchy using built-in heading styles.
+Provide ongoing staff upskilling through structured e-learning modules.
+
+Expected Benefits of Workflow Integration:
+• Improves document turnaround speed by 15 percent.
+• Increases daily task completion accuracy.
+• Reduces administrative clutter and duplicate files.
+• Lowers stress levels and boosts team morale.
+• Promotes seamless cross-departmental collaboration.
+
+Daily Administrative Routine:
+Time | Activity
+8:00 AM – Review daily correspondence and urgent emails
+9:00 AM – Process master sales and inventory records in Excel
+11:00 AM – Attend departmental alignment and status meeting
+1:00 PM – Format formal administrative reports in Microsoft Word
+3:00 PM – Update presentation decks and training materials
+5:00 PM – Archive files and prepare next day's schedule
+
+Tips for Presenters:
+• Balance text-heavy slides with clean visual bullet points.
+• Avoid reading directly from the slides during delivery.
+• Limit unnecessary animations and visual distractions.
+• Maintain professional posture, tone, and eye contact.
+• Ensure smooth slide transitions and precise timing.
+
+Closing Message:
+"An organized administrative workflow is the backbone of an efficient and productive corporate environment."`;
+
+            navigator.clipboard.writeText(rawText);
+            alert("Raw text copied to clipboard!");
+        }
+
+        function submitFinalAssessment() {
+            localStorage.setItem('powerpoint_quiz3_completed', 'true');
+            alert("Congratulations! You have completed the Microsoft PowerPoint Course!");
+            window.location.href = 'powerpoint-course.html';
+        }
+    </script>
+</body>
+</html>

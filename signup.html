@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GrindMind - Sign Up</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation / Header -->
+  <header class="navbar">
+    <div class="logo-container">
+      <img src="image/logo.png" alt="GrindMind Logo" class="logo-img">
+      <span>GRINDMIND.COM</span>
+    </div>
+    <a href="index.html" class="btn-logout">&larr; Back to Home</a>
+  </header>
+
+  <!-- Form Container -->
+  <main class="login-container">
+    <div class="login-box" style="padding-top: 40px;">
+      <h2 style="margin-bottom: 20px; color: #3b233a;">Sign Up</h2>
+
+      <form id="signupForm" class="login-form">
+        <div class="form-group">
+          <label for="signupName">Name</label>
+          <input type="text" id="signupName" placeholder="Enter your full name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="signupEmail">Email</label>
+          <input type="email" id="signupEmail" placeholder="Enter your email address" required>
+        </div>
+
+        <div class="form-group" style="position: relative;">
+          <label for="signupPassword">Password</label>
+          <div style="position: relative; display: flex; align-items: center;">
+            <input type="password" id="signupPassword" placeholder="Enter your password" required style="width: 100%; padding-right: 40px;">
+            <button type="button" id="toggleSignupPassword" style="position: absolute; right: 10px; background: none; border: none; cursor: pointer; font-size: 1.1rem; color: #6b7280;">👁️</button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit">Sign Up</button>
+
+        <p class="terms-text" style="margin-top: 20px;">
+          Already have an account? <a href="login.html" style="font-weight: bold;">Log in</a>
+        </p>
+
+        <p class="terms-text" style="margin-top: 10px;">
+          By Signing up, you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.
+        </p>
+      </form>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

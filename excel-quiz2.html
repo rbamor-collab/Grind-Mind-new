@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Module 2 Hands-On Challenge - GrindMind</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1a0b1c;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #1a0b1c;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .site-logo {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        .challenge-container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+
+        .challenge-card {
+            background-color: #ffffff;
+            color: #1a0b1c;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            margin-bottom: 25px;
+        }
+
+        .badge-challenge {
+            display: inline-block;
+            background-color: #d1fae5;
+            color: #059669;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .challenge-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #111827;
+            margin: 0 0 10px 0;
+        }
+
+        .requirements-list {
+            background-color: #f0fdf4;
+            border-left: 4px solid #10b981;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .requirements-list ul {
+            margin: 10px 0 0 0;
+            padding-left: 20px;
+            color: #374151;
+        }
+
+        .requirements-list li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .raw-data-box {
+            background-color: #2c1a2e;
+            color: #f3e8ff;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            position: relative;
+            margin: 15px 0;
+        }
+
+        .btn-copy {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #ff3385;
+            color: #fff;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .btn-copy:hover {
+            background-color: #e60067;
+        }
+
+        /* Excel-like Table Styling */
+        .excel-table-container {
+            overflow-x: auto;
+            margin-top: 15px;
+            border-radius: 8px;
+            border: 1px solid #d1d5db;
+        }
+
+        .excel-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Calibri', Arial, sans-serif;
+            background: #ffffff;
+            color: #000000;
+        }
+
+        .excel-table th, .excel-table td {
+            border: 1px solid #d1d5db;
+            padding: 8px 14px;
+            font-size: 0.9rem;
+        }
+
+        .excel-table th {
+            background-color: #107c41; /* Excel Green Header */
+            color: #ffffff;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .excel-table tr.summary-row {
+            background-color: #f3f4f6;
+            font-weight: bold;
+        }
+
+        .formula-tag {
+            font-family: monospace;
+            background-color: #e5e7eb;
+            color: #1f2937;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .upload-section {
+            background-color: #f3e8ff;
+            border: 2px dashed #ff75c3;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn-action {
+            background-color: #ff3385;
+            color: #ffffff;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn-action:hover {
+            background-color: #e60067;
+        }
+
+        .btn-back {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #6b7280;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="logo-container">
+            <img src="image/logo.png" alt="GrindMind Logo" class="site-logo">
+            <span class="logo-text">GRINDMIND</span>
+        </div>
+        <a href="excel-course.html" class="btn-back">&larr; Back to Excel Course</a>
+    </header>
+
+    <main class="challenge-container">
+        <div class="challenge-card">
+            <span class="badge-challenge">Excel Module 2 &bull; Hands-On Challenge</span>
+            <h1 class="challenge-title">Building a Monthly Sales Report</h1>
+            <p style="color: #4b5563; line-height: 1.6;">
+                Apply essential Excel formulas and functions from Module 2 (including <code>SUM</code>, <code>AVERAGE</code>, <code>COUNT</code>, <code>MAX</code>, and <code>MIN</code>) by organizing and computing raw sales data into a formatted spreadsheet.
+            </p>
+
+            <!-- REQUIREMENTS -->
+            <div class="requirements-list">
+                <h3 style="margin: 0; color: #111827;">📋 Challenge Requirements:</h3>
+                <ul>
+                    <li><strong>Data Entry:</strong> Input the raw sales data provided below into an Excel sheet with proper column headers.</li>
+                    <li><strong>Basic Math Operations:</strong> Compute the Total Sales per item (<code class="formula-tag">= Quantity Sold × Unit Price</code>) using cell references.</li>
+                    <li><strong>Excel Functions:</strong>
+                        <ul>
+                            <li>Calculate total revenue using <code class="formula-tag">=SUM()</code></li>
+                            <li>Calculate average sales per product using <code class="formula-tag">=AVERAGE()</code></li>
+                            <li>Determine total product items counted using <code class="formula-tag">=COUNT()</code></li>
+                            <li>Find peak sales using <code class="formula-tag">=MAX()</code> and lowest sales using <code class="formula-tag">=MIN()</code></li>
+                        </ul>
+                    </li>
+                    <li><strong>Formatting & Polish:</strong> Apply currency formatting (₱), cell borders, header shading (Excel Green), and proper cell alignments.</li>
+                </ul>
+            </div>
+
+            <!-- RAW DATA TO COPY -->
+            <h3 style="color: #111827; margin-top: 30px;">📄 Raw Data to Copy:</h3>
+            <div class="raw-data-box" id="rawData">
+<button class="btn-copy" onclick="copyRawData()">Copy CSV Data</button>Product Name,Category,Quantity Sold,Unit Price (PHP)
+Wireless Mouse,Electronics,45,750.00
+Mechanical Keyboard,Electronics,20,2450.00
+USB-C Flash Drive 64GB,Accessories,60,450.00
+Ergonomic Chair,Office Supplies,8,8500.00
+HD Webcam 1080p,Electronics,15,1800.00
+Desk Mat Pad,Office Supplies,35,350.00
+            </div>
+
+            <!-- TARGET SPREADSHEET PREVIEW -->
+            <h3 style="color: #111827; margin-top: 30px;">👁️ Target Excel Layout Reference:</h3>
+            <div class="excel-table-container">
+                <table class="excel-table">
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Category</th>
+                            <th style="text-align: right;">Quantity Sold</th>
+                            <th style="text-align: right;">Unit Price</th>
+                            <th style="text-align: right;">Total Sales</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Wireless Mouse</td>
+                            <td>Electronics</td>
+                            <td style="text-align: right;">45</td>
+                            <td style="text-align: right;">₱ 750.00</td>
+                            <td style="text-align: right; font-weight: 500;">₱ 33,750.00</td>
+                        </tr>
+                        <tr>
+                            <td>Mechanical Keyboard</td>
+                            <td>Electronics</td>
+                            <td style="text-align: right;">20</td>
+                            <td style="text-align: right;">₱ 2,450.00</td>
+                            <td style="text-align: right; font-weight: 500;">₱ 49,000.00</td>
+                        </tr>
+                        <tr>
+                            <td>USB-C Flash Drive 64GB</td>
+                            <td>Accessories</td>
+                            <td style="text-align: right;">60</td>
+                            <td style="text-align: right;">₱ 450.00</td>
+                            <td style="text-align: right; font-weight: 500;">₱ 27,000.00</td>
+                        </tr>
+                        <tr>
+                            <td>Ergonomic Chair</td>
+                            <td>Office Supplies</td>
+                            <td style="text-align: right;">8</td>
+                            <td style="text-align: right;">₱ 8,500.00</td>
+                            <td style="text-align: right; font-weight: 500;">₱ 68,000.00</td>
+                        </tr>
+                        <tr>
+                            <td>HD Webcam 1080p</td>
+                            <td>Electronics</td>
+                            <td style="text-align: right;">15</td>
+                            <td style="text-align: right;">₱ 1,800.00</td>
+                            <td style="text-align: right; font-weight: 500;">₱ 27,000.00</td>
+                        </tr>
+                        <tr>
+                            <td>Desk Mat Pad</td>
+                            <td>Office Supplies</td>
+                            <td style="text-align: right;">35</td>
+                            <td style="text-align: right;">₱ 350.00</td>
+                            <td style="text-align: right; font-weight: 500;">₱ 12,250.00</td>
+                        </tr>
+
+                        <!-- FORMULA SUMMARY ROWS -->
+                        <tr class="summary-row">
+                            <td colspan="4" style="text-align: right;">Total Revenue <span class="formula-tag">=SUM(E2:E7)</span>:</td>
+                            <td style="text-align: right; color: #107c41;">₱ 217,000.00</td>
+                        </tr>
+                        <tr class="summary-row">
+                            <td colspan="4" style="text-align: right;">Average Sales <span class="formula-tag">=AVERAGE(E2:E7)</span>:</td>
+                            <td style="text-align: right;">₱ 36,166.67</td>
+                        </tr>
+                        <tr class="summary-row">
+                            <td colspan="4" style="text-align: right;">Highest Product Sale <span class="formula-tag">=MAX(E2:E7)</span>:</td>
+                            <td style="text-align: right;">₱ 68,000.00</td>
+                        </tr>
+                        <tr class="summary-row">
+                            <td colspan="4" style="text-align: right;">Lowest Product Sale <span class="formula-tag">=MIN(E2:E7)</span>:</td>
+                            <td style="text-align: right;">₱ 12,250.00</td>
+                        </tr>
+                        <tr class="summary-row">
+                            <td colspan="4" style="text-align: right;">Total Product Items <span class="formula-tag">=COUNT(C2:C7)</span>:</td>
+                            <td style="text-align: right;">6</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- SUBMISSION SECTION -->
+            <div class="upload-section">
+                <h3 style="margin-top: 0; color: #1a0b1c;">Submit Spreadsheet & Unlock Module 3</h3>
+                <p style="color: #4b5563; font-size: 0.9rem;">Upload your completed <strong>.xlsx</strong> file below to verify your formulas and trigger completion.</p>
+                
+                <input type="file" id="fileUpload" style="margin-bottom: 15px;" accept=".xlsx,.xls,.csv"><br>
+                <button onclick="submitChallenge()" class="btn-action">Submit Assessment & Unlock Module 3 &rarr;</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        &copy; 2026 GrindMind. All rights reserved.
+    </footer>
+
+    <script>
+        function copyRawData() {
+            const rawText = `Product Name,Category,Quantity Sold,Unit Price (PHP)
+Wireless Mouse,Electronics,45,750.00
+Mechanical Keyboard,Electronics,20,2450.00
+USB-C Flash Drive 64GB,Accessories,60,450.00
+Ergonomic Chair,Office Supplies,8,8500.00
+HD Webcam 1080p,Electronics,15,1800.00
+Desk Mat Pad,Office Supplies,35,350.00`;
+
+            navigator.clipboard.writeText(rawText);
+            alert("Raw CSV data copied to clipboard!");
+        }
+
+        function submitChallenge() {
+            // Set local storage flag for Excel Module 2 completion
+            localStorage.setItem('excel_quiz2_completed', 'true');
+            alert("Great job! Excel Module 2 Challenge submitted successfully. Module 3 is now unlocked!");
+            window.location.href = 'excel-course.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 2 Hands-On Challenge - GrindMind</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1a0b1c;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #1a0b1c;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .site-logo {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        .challenge-container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+
+        .challenge-card {
+            background-color: #ffffff;
+            color: #1a0b1c;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            margin-bottom: 25px;
+        }
+
+        .badge-challenge {
+            display: inline-block;
+            background-color: #fce7f3;
+            color: #db2777;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .challenge-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #111827;
+            margin: 0 0 10px 0;
+        }
+
+        .requirements-list {
+            background-color: #f9fafb;
+            border-left: 4px solid #ff3385;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .requirements-list ul {
+            margin: 10px 0 0 0;
+            padding-left: 20px;
+            color: #374151;
+        }
+
+        .requirements-list li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .raw-data-box {
+            background-color: #2c1a2e;
+            color: #f3e8ff;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            position: relative;
+            margin: 15px 0;
+        }
+
+        .btn-copy {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #ff3385;
+            color: #fff;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .btn-copy:hover {
+            background-color: #e60067;
+        }
+
+        .memo-preview {
+            border: 1px solid #d1d5db;
+            padding: 30px;
+            background: #fff;
+            color: #000;
+            font-family: Arial, sans-serif;
+            margin-top: 15px;
+            border-radius: 8px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+        }
+
+        .memo-header-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+
+        .memo-header-table td {
+            padding: 4px 0;
+            font-weight: bold;
+            color: #111827;
+        }
+
+        .memo-divider {
+            border-bottom: 2px solid #111827;
+            margin-bottom: 20px;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .schedule-table th, .schedule-table td {
+            border: 1px solid #9ca3af;
+            padding: 8px 12px;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        .schedule-table th {
+            background-color: #f3f4f6;
+            color: #111827;
+        }
+
+        .upload-section {
+            background-color: #f3e8ff;
+            border: 2px dashed #ff75c3;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn-action {
+            background-color: #ff3385;
+            color: #ffffff;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn-action:hover {
+            background-color: #e60067;
+        }
+
+        .btn-back {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #6b7280;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="logo-container">
+            <img src="image/logo.png" alt="GrindMind Logo" class="site-logo">
+            <span class="logo-text">GRINDMIND</span>
+        </div>
+        <a href="word-course.html" class="btn-back">&larr; Back to Word Course</a>
+    </header>
+
+    <main class="challenge-container">
+        <div class="challenge-card">
+            <span class="badge-challenge">Module 2 &bull; Quiz & Challenge</span>
+            <h1 class="challenge-title">Formatting an Official Corporate Memorandum</h1>
+            <p style="color: #4b5563; line-height: 1.6;">
+                Apply what you have learned in Module 2 by formatting the raw memorandum text and schedule data provided below into a professional, standardized corporate document in MS Word.
+            </p>
+
+            <!-- REQUIREMENTS -->
+            <div class="requirements-list">
+                <h3 style="margin: 0; color: #111827;">📋 Challenge Requirements:</h3>
+                <ul>
+                    <li><strong>Memo Header Layout:</strong> Properly structure the MEMORANDUM header (TO, FROM, DATE, SUBJECT) with clean alignment and a dividing line.</li>
+                    <li><strong>Insert & Format Tables:</strong> Organize the meeting schedule into a clean table with appropriate borders, cell padding, and header shading.</li>
+                    <li><strong>Margins & Spacing:</strong> Set standard margins (1 inch) and maintain professional line spacing (1.15 or 1.5).</li>
+                    <li><strong>Heading Hierarchy:</strong> Use bold, professional fonts (e.g., Arial or Calibri) for section headings.</li>
+                    <li><strong>Final Polish:</strong> Ensure proper alignment, professional tone, and clean document flow.</li>
+                </ul>
+            </div>
+
+            <!-- RAW DATA -->
+            <h3 style="color: #111827; margin-top: 30px;">📄 Raw Data to Copy:</h3>
+            <div class="raw-data-box" id="rawData">
+<button class="btn-copy" onclick="copyRawData()">Copy Text</button>TO: All Administrative Division Personnel
+FROM: Office of the Director
+DATE: October 29, 2026
+SUBJECT: Implementation of Standardized Digital Workflow and Quarterly Review
+
+1. Purpose
+This memorandum serves to formally announce the rollout of our new digital workflow templates across all departments to reduce document processing bottlenecks and streamline daily operations.
+
+2. Implementation Schedule
+Nov 03, 2026 | Finance Division | Word Document Standardization
+Nov 10, 2026 | Human Resources | Excel Data Tracking & Formulas
+Nov 17, 2026 | Operations Team | PowerPoint Presentation Pitch
+
+3. Action Required
+All department heads are required to attend the orientation session and submit their feedback reports on or before November 25, 2026. Your cooperation is highly appreciated.
+            </div>
+
+            <!-- EXPECTED OUTPUT PREVIEW -->
+            <h3 style="color: #111827; margin-top: 30px;">👁️ Target Output Reference:</h3>
+            <div class="memo-preview">
+                <h2 style="text-align: center; margin-top: 0; letter-spacing: 2px;">MEMORANDUM</h2>
+                <div class="memo-divider"></div>
+                <table class="memo-header-table">
+                    <tr><td style="width: 90px;">TO:</td><td>All Administrative Division Personnel</td></tr>
+                    <tr><td>FROM:</td><td>Office of the Director</td></tr>
+                    <tr><td>DATE:</td><td>October 29, 2026</td></tr>
+                    <tr><td>SUBJECT:</td><td>Implementation of Standardized Digital Workflow and Quarterly Review</td></tr>
+                </table>
+                <div class="memo-divider"></div>
+
+                <h4 style="margin-bottom: 5px;">1. Purpose</h4>
+                <p style="margin-top: 0; font-size: 0.95rem; line-height: 1.5;">
+                    This memorandum serves to formally announce the rollout of our new digital workflow templates across all departments to reduce document processing bottlenecks and streamline daily operations.
+                </p>
+
+                <h4 style="margin-bottom: 5px;">2. Implementation Schedule</h4>
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Department</th>
+                            <th>Activity / Focus Area</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Nov 03, 2026</td>
+                            <td>Finance Division</td>
+                            <td>Word Document Standardization</td>
+                        </tr>
+                        <tr>
+                            <td>Nov 10, 2026</td>
+                            <td>Human Resources</td>
+                            <td>Excel Data Tracking & Formulas</td>
+                        </tr>
+                        <tr>
+                            <td>Nov 17, 2026</td>
+                            <td>Operations Team</td>
+                            <td>PowerPoint Presentation Pitch</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4 style="margin-bottom: 5px; margin-top: 20px;">3. Action Required</h4>
+                <p style="margin-top: 0; font-size: 0.95rem; line-height: 1.5;">
+                    All department heads are required to attend the orientation session and submit their feedback reports on or before November 25, 2026. Your cooperation is highly appreciated.
+                </p>
+            </div>
+
+            <!-- SUBMISSION / UNLOCK SECTION -->
+            <div class="upload-section">
+                <h3 style="margin-top: 0; color: #1a0b1c;">Submit Challenge & Complete Quiz</h3>
+                <p style="color: #4b5563; font-size: 0.9rem;">Once you have created your document in MS Word, upload your file below or mark as completed to unlock Module 3.</p>
+                
+                <input type="file" id="fileUpload" style="margin-bottom: 15px;" accept=".docx,.pdf"><br>
+                <button onclick="submitChallenge()" class="btn-action">Submit Assessment & Unlock Module 3 &rarr;</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        &copy; 2026 GrindMind. All rights reserved.
+    </footer>
+
+    <script>
+        function copyRawData() {
+            const rawText = `TO: All Administrative Division Personnel
+FROM: Office of the Director
+DATE: October 29, 2026
+SUBJECT: Implementation of Standardized Digital Workflow and Quarterly Review
+
+1. Purpose
+This memorandum serves to formally announce the rollout of our new digital workflow templates across all departments to reduce document processing bottlenecks and streamline daily operations.
+
+2. Implementation Schedule
+Nov 03, 2026 | Finance Division | Word Document Standardization
+Nov 10, 2026 | Human Resources | Excel Data Tracking & Formulas
+Nov 17, 2026 | Operations Team | PowerPoint Presentation Pitch
+
+3. Action Required
+All department heads are required to attend the orientation session and submit their feedback reports on or before November 25, 2026. Your cooperation is highly appreciated.`;
+
+            navigator.clipboard.writeText(rawText);
+            alert("Raw data copied to clipboard!");
+        }
+
+        function submitChallenge() {
+            // Save completion status to localStorage for Module 2 Quiz
+            localStorage.setItem('word_quiz2_completed', 'true');
+            alert("Congratulations! You have submitted Module 2 Hands-On Challenge. Module 3 is now unlocked!");
+            window.location.href = 'word-course.html';
+        }
+    </script>
+</body>
+</html>

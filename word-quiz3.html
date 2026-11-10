@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 3 Final Assessment - GrindMind</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1a0b1c;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #1a0b1c;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .site-logo {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        .challenge-container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+
+        .challenge-card {
+            background-color: #ffffff;
+            color: #1a0b1c;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            margin-bottom: 25px;
+        }
+
+        .badge-challenge {
+            display: inline-block;
+            background-color: #fce7f3;
+            color: #db2777;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .challenge-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #111827;
+            margin: 0 0 10px 0;
+        }
+
+        .requirements-list {
+            background-color: #f9fafb;
+            border-left: 4px solid #ff3385;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .requirements-list ul {
+            margin: 10px 0 0 0;
+            padding-left: 20px;
+            color: #374151;
+        }
+
+        .requirements-list li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .raw-data-box {
+            background-color: #2c1a2e;
+            color: #f3e8ff;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            position: relative;
+            margin: 15px 0;
+        }
+
+        .btn-copy {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #ff3385;
+            color: #fff;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .btn-copy:hover {
+            background-color: #e60067;
+        }
+
+        .report-preview {
+            border: 1px solid #d1d5db;
+            padding: 35px;
+            background: #fff;
+            color: #000;
+            font-family: 'Calibri', Arial, sans-serif;
+            margin-top: 15px;
+            border-radius: 8px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+        }
+
+        .report-title {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #1f497d;
+            margin-bottom: 5px;
+            border-bottom: 2px solid #1f497d;
+            padding-bottom: 5px;
+        }
+
+        .report-meta {
+            font-size: 0.9rem;
+            color: #595959;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .report-h1 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #1f497d;
+            margin-top: 18px;
+            margin-bottom: 8px;
+        }
+
+        .upload-section {
+            background-color: #f3e8ff;
+            border: 2px dashed #ff75c3;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn-action {
+            background-color: #ff3385;
+            color: #ffffff;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn-action:hover {
+            background-color: #e60067;
+        }
+
+        .btn-back {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #6b7280;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="logo-container">
+            <img src="image/logo.png" alt="GrindMind Logo" class="site-logo">
+            <span class="logo-text">GRINDMIND</span>
+        </div>
+        <a href="word-course.html" class="btn-back">&larr; Back to Word Course</a>
+    </header>
+
+    <main class="challenge-container">
+        <div class="challenge-card">
+            <span class="badge-challenge">Module 3 &bull; Final Course Assessment</span>
+            <h1 class="challenge-title">Formatting an Official Assessment Report & PDF Export</h1>
+            <p style="color: #4b5563; line-height: 1.6;">
+                Apply styles, document hierarchy, and professional formatting techniques to raw report content, then export the finished document into PDF format.
+            </p>
+
+            <!-- REQUIREMENTS -->
+            <div class="requirements-list">
+                <h3 style="margin: 0; color: #111827;">📋 Challenge Requirements:</h3>
+                <ul>
+                    <li><strong>Document Styles:</strong> Apply Heading 1 styles to all numbered section titles (1. Introduction, 2. Department Performance, etc.).</li>
+                    <li><strong>Table of Contents (Optional/Bonus):</strong> Insert an automated Table of Contents at the top of the report.</li>
+                    <li><strong>Header & Subtitle Formatting:</strong> Format the report title using bold styling and larger font size (18pt-20pt).</li>
+                    <li><strong>Exporting & Submission:</strong> Export your final formatted report as a <strong>PDF document</strong> and submit below.</li>
+                </ul>
+            </div>
+
+            <!-- RAW DATA -->
+            <h3 style="color: #111827; margin-top: 30px;">📄 Raw Data to Copy:</h3>
+            <div class="raw-data-box" id="rawData">
+<button class="btn-copy" onclick="copyRawData()">Copy Text</button>Title: Annual Office Productivity and Task Management Assessment Report
+Prepared by: [Learner's Name] | Administrative Department
+Date: October 29, 2026
+
+1. Introduction
+This report evaluates the administrative workflow and employee productivity levels across different departments over the past year. The primary objective is to identify bottlenecks and implement structured digital tools to streamline daily operations.
+
+2. Department Performance Overview
+Data gathered from Q1 to Q4 indicates a 15% increase in document turnaround time. Below is the summary of task completion rates per department: Finance (92%), Human Resources (88%), and Operations (95%).
+
+3. Key Findings & Recommendations
+According to Smith (2025), automated workflow integration reduces administrative errors significantly. It is recommended to adopt standardized templates, enforce proper document hierarchy using heading styles, and maintain centralized digital filing systems.
+
+4. Conclusion
+Proper document formatting and structured reporting are vital for maintaining clear communication and efficiency within administrative environments.
+            </div>
+
+            <!-- TARGET PREVIEW -->
+            <h3 style="color: #111827; margin-top: 30px;">👁️ Target Output Reference:</h3>
+            <div class="report-preview">
+                <div class="report-title">Annual Office Productivity and Task Management Assessment Report</div>
+                <div class="report-meta">Prepared by: [Learner's Name] | Administrative Department &nbsp;|&nbsp; Date: October 29, 2026</div>
+
+                <div class="report-h1">1. Introduction</div>
+                <p style="line-height: 1.6; margin-top: 0;">
+                    This report evaluates the administrative workflow and employee productivity levels across different departments over the past year. The primary objective is to identify bottlenecks and implement structured digital tools to streamline daily operations.
+                </p>
+
+                <div class="report-h1">2. Department Performance Overview</div>
+                <p style="line-height: 1.6; margin-top: 0;">
+                    Data gathered from Q1 to Q4 indicates a 15% increase in document turnaround time. Below is the summary of task completion rates per department: Finance (92%), Human Resources (88%), and Operations (95%).
+                </p>
+
+                <div class="report-h1">3. Key Findings & Recommendations</div>
+                <p style="line-height: 1.6; margin-top: 0;">
+                    According to Smith (2025), automated workflow integration reduces administrative errors significantly. It is recommended to adopt standardized templates, enforce proper document hierarchy using heading styles, and maintain centralized digital filing systems.
+                </p>
+
+                <div class="report-h1">4. Conclusion</div>
+                <p style="line-height: 1.6; margin-top: 0;">
+                    Proper document formatting and structured reporting are vital for maintaining clear communication and efficiency within administrative environments.
+                </p>
+            </div>
+
+            <!-- SUBMISSION / COURSE COMPLETION TRIGGER -->
+            <div class="upload-section">
+                <h3 style="margin-top: 0; color: #1a0b1c;">Submit Final Report & Complete Course</h3>
+                <p style="color: #4b5563; font-size: 0.9rem;">Upload your exported PDF file below to finalize your Word Course requirements!</p>
+                
+                <input type="file" id="fileUpload" style="margin-bottom: 15px;" accept=".pdf,.docx"><br>
+                <button onclick="submitFinalAssessment()" class="btn-action">Submit & Complete Word Course 🎉</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        &copy; 2026 GrindMind. All rights reserved.
+    </footer>
+
+    <script>
+        function copyRawData() {
+            const rawText = `Title: Annual Office Productivity and Task Management Assessment Report
+Prepared by: [Learner's Name] | Administrative Department
+Date: October 29, 2026
+
+1. Introduction
+This report evaluates the administrative workflow and employee productivity levels across different departments over the past year. The primary objective is to identify bottlenecks and implement structured digital tools to streamline daily operations.
+
+2. Department Performance Overview
+Data gathered from Q1 to Q4 indicates a 15% increase in document turnaround time. Below is the summary of task completion rates per department: Finance (92%), Human Resources (88%), and Operations (95%).
+
+3. Key Findings & Recommendations
+According to Smith (2025), automated workflow integration reduces administrative errors significantly. It is recommended to adopt standardized templates, enforce proper document hierarchy using heading styles, and maintain centralized digital filing systems.
+
+4. Conclusion
+Proper document formatting and structured reporting are vital for maintaining clear communication and efficiency within administrative environments.`;
+
+            navigator.clipboard.writeText(rawText);
+            alert("Raw text copied to clipboard!");
+        }
+
+        function submitFinalAssessment() {
+            // Save completion status to localStorage for Quiz 3 / Final Item
+            localStorage.setItem('word_quiz3_completed', 'true');
+            alert("Congratulations! You have completed the Microsoft Word Course!");
+            window.location.href = 'word-course.html';
+        }
+    </script>
+</body>
+</html>

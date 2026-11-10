@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRINDMIND.COM - Microsoft PowerPoint Course</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .lesson-item {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .lesson-link {
+            text-decoration: none;
+            font-weight: 600;
+            color: #2c1a2e;
+            transition: color 0.3s;
+        }
+        .lesson-link:hover {
+            color: #ff75c3;
+        }
+        .locked {
+            color: #9ca3af !important;
+            pointer-events: none;
+            cursor: not-allowed;
+            text-decoration: none !important;
+        }
+        .badge-status {
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .badge-locked {
+            background-color: #f3f4f6;
+            color: #9ca3af;
+        }
+        .badge-unlocked {
+            background-color: #d1fae5;
+            color: #059669;
+        }
+        .badge-completed {
+            background-color: #fce7f3;
+            color: #db2777;
+        }
+        .ppt-tag {
+            background-color: #d97706;
+            color: #ffffff;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 6px 12px;
+            border-radius: 6px;
+            letter-spacing: 0.5px;
+            display: inline-block;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            margin: 10px 0;
+            background-color: #000;
+            width: 100%;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .btn-complete {
+            background-color: #ff75c3;
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 5px;
+            align-self: flex-start;
+        }
+        .btn-complete:hover {
+            background-color: #db2777;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo-container">
+            <img src="image/logo.png" alt="GrindMind Logo" class="site-logo">
+            <span class="logo-text">GRINDMIND.COM</span>
+        </div>
+        <div class="nav-buttons" style="display: flex; gap: 10px;">
+            <a href="dashboard.html" class="btn-logout" style="text-decoration: none;">&larr; Back to Courses</a>
+            <a href="index.html" class="btn-logout" style="text-decoration: none;">&larr; Back to Home</a>
+        </div>
+    </header>
+
+    <main class="main-container" style="max-width: 900px; margin-top: 20px;">
+        <!-- COURSE HEADER -->
+        <div class="course-card" style="margin-bottom: 25px;">
+            <span class="ppt-tag">COURSE 3: MICROSOFT POWERPOINT</span>
+            <h2 style="margin: 15px 0 5px 0; color: #2c1a2e; font-size: 1.4rem;">Master presentation design, slide layouts, animations, and media integration.</h2>
+            <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 15px;">Progress Bar: <span id="progress-text">0 / 9 Items Completed</span></p>
+            
+            <div style="width: 100%; background-color: #f3e8ff; border-radius: 10px; height: 10px; overflow: hidden;">
+                <div id="progress-bar" style="width: 0%; background-color: #ff75c3; height: 100%; transition: width 0.4s;"></div>
+            </div>
+            <span id="progress-percent" style="font-size: 0.8rem; color: #ff75c3; font-weight: bold; margin-top: 5px; display: block;">0%</span>
+        </div>
+
+        <h3 style="color: #ffffff; letter-spacing: 1px; margin-bottom: 15px; font-size: 1.1rem;">COURSE MODULES</h3>
+
+        <!-- MODULE 1 -->
+        <div class="course-card" style="margin-bottom: 20px;">
+            <h4 style="margin: 0 0 15px 0; color: #2c1a2e; font-size: 1.1rem;">MODULE 1: PowerPoint Interface & Slide Basics</h4>
+            
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <!-- LESSON 1.1 -->
+                <div class="lesson-item" style="flex-direction: column; align-items: flex-start; background: #ffffff; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span id="badge-1-1" class="badge-status badge-unlocked">UNLOCKED</span>
+                        <span class="lesson-link">Lesson 1.1: Navigating Slides, Layouts & Themes</span>
+                    </div>
+
+                    <div class="video-container">
+                        <iframe 
+                            src="https://www.youtube.com/embed/Q6ESBLcOUn0" 
+                            title="Lesson 1.1" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            referrerpolicy="strict-origin-when-cross-origin" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <button onclick="markLesson1_1Complete()" class="btn-complete">Mark as Completed</button>
+                </div>
+
+                <!-- LESSON 1.2 -->
+                <div class="lesson-item" style="flex-direction: column; align-items: flex-start; background: #ffffff; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span id="badge-1-2" class="badge-status badge-locked">🔒 LOCKED</span>
+                        <span id="link-1-2" class="lesson-link locked">Lesson 1.2: Text Formatting & WordArt Styling</span>
+                    </div>
+
+                    <div class="video-container" id="video-box-1-2" style="display: none;">
+                        <iframe 
+                            src="https://www.youtube.com/embed/XKzprBQyM6Q" 
+                            title="Lesson 1.2" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            referrerpolicy="strict-origin-when-cross-origin" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <button id="btn-complete-1-2" onclick="markLesson1_2Complete()" class="btn-complete" style="display: none;">Mark as Completed</button>
+                </div>
+
+                <!-- QUIZ 1 -->
+                <div class="lesson-item" style="padding: 10px 15px;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span id="badge-quiz-1" class="badge-status badge-locked">🔒 LOCKED</span>
+                        <a href="powerpoint-quiz1.html" id="link-quiz-1" class="lesson-link locked" style="color: #ff75c3;">Quiz 1: Module 1 Knowledge Check</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODULE 2 -->
+        <div class="course-card" style="margin-bottom: 20px;">
+            <h4 style="margin: 0 0 15px 0; color: #2c1a2e; font-size: 1.1rem;">MODULE 2: Visual Elements & Media Integration</h4>
+            
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <!-- LESSON 2.1 -->
+                <div class="lesson-item" style="flex-direction: column; align-items: flex-start; background: #ffffff; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span id="badge-2-1" class="badge-status badge-locked">🔒 LOCKED</span>
+                        <span id="link-2-1" class="lesson-link locked">Lesson 2.1: Inserting Images, Shapes & SmartArt</span>
+                    </div>
+
+                    <div class="video-container" id="video-box-2-1" style="display: none;">
+                        <iframe 
+                            src="https://www.youtube.com/embed/220fJjEk2jg" 
+                            title="Lesson 2.1" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            referrerpolicy="strict-origin-when-cross-origin" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <button id="btn-complete-2-1" onclick="markLesson2_1Complete()" class="btn-complete" style="display: none;">Mark as Completed</button>
+                </div>
+
+                <!-- LESSON 2.2 -->
+                <div class="lesson-item" style="flex-direction: column; align-items: flex-start; background: #ffffff; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span id="badge-2-2" class="badge-status badge-locked">🔒 LOCKED</span>
+                        <span id="link-2-2" class="lesson-link locked">Lesson 2.2: Embedding Audio & Video Clips</span>
+                    </div>
+
+                    <div class="video-container" id="video-box-2-2" style="display: none;">
+                        <iframe 
+                            src="https://www.youtube.com/embed/r8v6VKwVbbs" 
+                            title="Lesson 2.2" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            referrerpolicy="strict-origin-when-cross-origin" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <button id="btn-complete-2-2" onclick="markLesson2_2Complete()" class="btn-complete" style="display: none;">Mark as Completed</button>
+                </div>
+
+                <!-- QUIZ 2 -->
+                <div class="lesson-item" style="padding: 10px 15px;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span id="badge-quiz-2" class="badge-status badge-locked">🔒 LOCKED</span>
+                        <a href="powerpoint-quiz2.html" id="link-quiz-2" class="lesson-link locked" style="color: #ff75c3;">Quiz 2: Module 2 Knowledge Check</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODULE 3 -->
+        <div class="course-card" style="margin-bottom: 20px;">
+            <h4 style="margin: 0 0 15px 0; color: #2c1a2e; font-size: 1.1rem;">MODULE 3: Animations & Presentation Delivery</h4>
+            
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <!-- LESSON 3.1 -->
+                <div class="lesson-item" style="flex-direction: column; align-items: flex-start; background: #ffffff; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span id="badge-3-1" class="badge-status badge-locked">🔒 LOCKED</span>
+                        <span id="link-3-1" class="lesson-link locked">Lesson 3.1: Slide Transitions & Custom Animations</span>
+                    </div>
+
+                    <div class="video-container" id="video-box-3-1" style="display: none;">
+                        <iframe 
+                            src="https://www.youtube.com/embed/lP-FibEJGfQ" 
+                            title="Lesson 3.1" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            referrerpolicy="strict-origin-when-cross-origin" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <button id="btn-complete-3-1" onclick="markLesson3_1Complete()" class="btn-complete" style="display: none;">Mark as Completed</button>
+                </div>
+
+                <!-- LESSON 3.2 -->
+                <div class="lesson-item" style="flex-direction: column; align-items: flex-start; background: #ffffff; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span id="badge-3-2" class="badge-status badge-locked">🔒 LOCKED</span>
+                        <span id="link-3-2" class="lesson-link locked">Lesson 3.2: Slide Show Controls & Presenter Tools</span>
+                    </div>
+
+                    <div class="video-container" id="video-box-3-2" style="display: none;">
+                        <iframe 
+                            src="https://www.youtube.com/embed/fPRkWlsVBDw" 
+                            title="Lesson 3.2" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            referrerpolicy="strict-origin-when-cross-origin" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <button id="btn-complete-3-2" onclick="markLesson3_2Complete()" class="btn-complete" style="display: none;">Mark as Completed</button>
+                </div>
+
+                <!-- QUIZ 3 -->
+                <div class="lesson-item" style="padding: 10px 15px;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span id="badge-quiz-3" class="badge-status badge-locked">🔒 LOCKED</span>
+                        <a href="powerpoint-quiz3.html" id="link-quiz-3" class="lesson-link locked" style="color: #ff75c3;">Quiz 3: Final Module Knowledge Check</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function markLesson1_1Complete() {
+            localStorage.setItem('powerpoint_lesson1_1_completed', 'true');
+            alert('Natapos mo na ang Lesson 1.1!');
+            checkProgress();
+        }
+
+        function markLesson1_2Complete() {
+            localStorage.setItem('powerpoint_lesson1_2_completed', 'true');
+            alert('Natapos mo na ang Lesson 1.2!');
+            checkProgress();
+        }
+
+        function markLesson2_1Complete() {
+            localStorage.setItem('powerpoint_lesson2_1_completed', 'true');
+            alert('Natapos mo na ang Lesson 2.1!');
+            checkProgress();
+        }
+
+        function markLesson2_2Complete() {
+            localStorage.setItem('powerpoint_lesson2_2_completed', 'true');
+            alert('Natapos mo na ang Lesson 2.2!');
+            checkProgress();
+        }
+
+        function markLesson3_1Complete() {
+            localStorage.setItem('powerpoint_lesson3_1_completed', 'true');
+            alert('Natapos mo na ang Lesson 3.1!');
+            checkProgress();
+        }
+
+        function markLesson3_2Complete() {
+            localStorage.setItem('powerpoint_lesson3_2_completed', 'true');
+            alert('Natapos mo na ang Lesson 3.2!');
+            checkProgress();
+        }
+
+        function checkProgress() {
+            const l1_1 = localStorage.getItem('powerpoint_lesson1_1_completed') === 'true';
+            const l1_2 = localStorage.getItem('powerpoint_lesson1_2_completed') === 'true';
+            const q1   = localStorage.getItem('powerpoint_quiz1_completed') === 'true' || 
+                         localStorage.getItem('powerpoint_quiz_1_completed') === 'true' ||
+                         localStorage.getItem('quiz1_completed') === 'true';
+
+            const l2_1 = localStorage.getItem('powerpoint_lesson2_1_completed') === 'true';
+            const l2_2 = localStorage.getItem('powerpoint_lesson2_2_completed') === 'true';
+            const q2   = localStorage.getItem('powerpoint_quiz2_completed') === 'true' ||
+                         localStorage.getItem('powerpoint_quiz_2_completed') === 'true' ||
+                         localStorage.getItem('quiz2_completed') === 'true';
+
+            const l3_1 = localStorage.getItem('powerpoint_lesson3_1_completed') === 'true';
+            const l3_2 = localStorage.getItem('powerpoint_lesson3_2_completed') === 'true';
+            const q3   = localStorage.getItem('powerpoint_quiz3_completed') === 'true' ||
+                         localStorage.getItem('powerpoint_quiz_3_completed') === 'true' ||
+                         localStorage.getItem('quiz3_completed') === 'true';
+
+            let completed = 0;
+
+            // --- MODULE 1 PROGRESS ---
+            if (l1_1) {
+                completed++;
+                document.getElementById('badge-1-1').className = 'badge-status badge-completed';
+                document.getElementById('badge-1-1').innerText = 'COMPLETED ✓';
+
+                document.getElementById('link-1-2').classList.remove('locked');
+                document.getElementById('badge-1-2').className = 'badge-status badge-unlocked';
+                document.getElementById('badge-1-2').innerText = 'UNLOCKED';
+                document.getElementById('video-box-1-2').style.display = 'block';
+                document.getElementById('btn-complete-1-2').style.display = 'block';
+            }
+
+            if (l1_2) {
+                completed++;
+                document.getElementById('badge-1-2').className = 'badge-status badge-completed';
+                document.getElementById('badge-1-2').innerText = 'COMPLETED ✓';
+
+                document.getElementById('link-quiz-1').classList.remove('locked');
+                document.getElementById('badge-quiz-1').className = 'badge-status badge-unlocked';
+                document.getElementById('badge-quiz-1').innerText = 'UNLOCKED';
+            }
+
+            if (q1) {
+                completed++;
+                document.getElementById('badge-quiz-1').className = 'badge-status badge-completed';
+                document.getElementById('badge-quiz-1').innerText = 'COMPLETED ✓';
+            }
+
+            // UNLOCK MODULE 2 (Lesson 2.1)
+            if (l1_2 || q1) {
+                document.getElementById('link-2-1').classList.remove('locked');
+                document.getElementById('badge-2-1').className = 'badge-status badge-unlocked';
+                document.getElementById('badge-2-1').innerText = 'UNLOCKED';
+                document.getElementById('video-box-2-1').style.display = 'block';
+                document.getElementById('btn-complete-2-1').style.display = 'block';
+            }
+
+            // --- MODULE 2 PROGRESS ---
+            if (l2_1) {
+                completed++;
+                document.getElementById('badge-2-1').className = 'badge-status badge-completed';
+                document.getElementById('badge-2-1').innerText = 'COMPLETED ✓';
+
+                document.getElementById('link-2-2').classList.remove('locked');
+                document.getElementById('badge-2-2').className = 'badge-status badge-unlocked';
+                document.getElementById('badge-2-2').innerText = 'UNLOCKED';
+                document.getElementById('video-box-2-2').style.display = 'block';
+                document.getElementById('btn-complete-2-2').style.display = 'block';
+            }
+
+            if (l2_2) {
+                completed++;
+                document.getElementById('badge-2-2').className = 'badge-status badge-completed';
+                document.getElementById('badge-2-2').innerText = 'COMPLETED ✓';
+
+                document.getElementById('link-quiz-2').classList.remove('locked');
+                document.getElementById('badge-quiz-2').className = 'badge-status badge-unlocked';
+                document.getElementById('badge-quiz-2').innerText = 'UNLOCKED';
+            }
+
+            if (q2) {
+                completed++;
+                document.getElementById('badge-quiz-2').className = 'badge-status badge-completed';
+                document.getElementById('badge-quiz-2').innerText = 'COMPLETED ✓';
+            }
+
+            // UNLOCK MODULE 3 (Lesson 3.1)
+            if (l2_2 || q2) {
+                document.getElementById('link-3-1').classList.remove('locked');
+                document.getElementById('badge-3-1').className = 'badge-status badge-unlocked';
+                document.getElementById('badge-3-1').innerText = 'UNLOCKED';
+                document.getElementById('video-box-3-1').style.display = 'block';
+                document.getElementById('btn-complete-3-1').style.display = 'block';
+            }
+
+            // --- MODULE 3 PROGRESS ---
+            if (l3_1) {
+                completed++;
+                document.getElementById('badge-3-1').className = 'badge-status badge-completed';
+                document.getElementById('badge-3-1').innerText = 'COMPLETED ✓';
+
+                document.getElementById('link-3-2').classList.remove('locked');
+                document.getElementById('badge-3-2').className = 'badge-status badge-unlocked';
+                document.getElementById('badge-3-2').innerText = 'UNLOCKED';
+                document.getElementById('video-box-3-2').style.display = 'block';
+                document.getElementById('btn-complete-3-2').style.display = 'block';
+            }
+
+            if (l3_2) {
+                completed++;
+                document.getElementById('badge-3-2').className = 'badge-status badge-completed';
+                document.getElementById('badge-3-2').innerText = 'COMPLETED ✓';
+
+                document.getElementById('link-quiz-3').classList.remove('locked');
+                document.getElementById('badge-quiz-3').className = 'badge-status badge-unlocked';
+                document.getElementById('badge-quiz-3').innerText = 'UNLOCKED';
+            }
+
+            if (q3) {
+                completed++;
+                document.getElementById('badge-quiz-3').className = 'badge-status badge-completed';
+                document.getElementById('badge-quiz-3').innerText = 'COMPLETED ✓';
+            }
+
+            // Update Progress Bar
+            const percent = Math.round((completed / 9) * 100);
+            document.getElementById('progress-bar').style.width = percent + '%';
+            document.getElementById('progress-percent').innerText = percent + '%';
+            document.getElementById('progress-text').innerText = completed + ' / 9 Items Completed';
+        }
+
+        checkProgress();
+    </script>
+</body>
+</html>
